@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ----------------- DOM Elements -----------------
-    const form = document.getElementById("registration-form");
-    const feedbackDiv = document.getElementById("form-feedback");
 
-    form.addEventListener("submit", (event) => {
+    // ----------------- Form Validation Function -----------------
+    function validateForm(event) {
         event.preventDefault(); // منع الإرسال الفعلي للـ form
+
+        // ----------------- DOM Elements -----------------
+        const form = document.getElementById("registration-form");
+        const feedbackDiv = document.getElementById("form-feedback");
 
         // ----------------- Retrieve Inputs -----------------
         const username = document.getElementById("username").value.trim();
@@ -43,5 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
             feedbackDiv.innerHTML = messages.join("<br>");
             feedbackDiv.style.color = "#dc3545";
         }
-    });
+    }
+
+    // ----------------- Event Listener -----------------
+    const form = document.getElementById("registration-form");
+    form.addEventListener("submit", validateForm);
+
 });
